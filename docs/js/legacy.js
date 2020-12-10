@@ -6794,8 +6794,12 @@ function init_app() {
                         var e = this.props.application,
                             t = e.school_name.substr(0, 50),
                             n = e.github || "N/A",
-                            r = e.linkedin || "N/A",
-                            a = "https://s3-us-west-1.amazonaws.com/sbhacks/" + e.s3_hash + ".pdf";
+                            r = e.linkedin || "N/A";
+                        if(e.s3_hash == undefined || e.s3_hash == null || e.s3_hash == "") {
+                            a = "N/A";
+                        } else {
+                            a = "https://s3-us-west-1.amazonaws.com/sbhacks-dev/" + e.s3_hash + ".pdf";
+                        }
                         return o.default.createElement("tr", null, o.default.createElement("td", null, e.first_name, " ", e.last_name), o.default.createElement("td", null, t), o.default.createElement("td", null, e.major), o.default.createElement("td", null, e.graduation_year), o.default.createElement("td", null, e.ethnicity), o.default.createElement("td", null, e.level_of_study), o.default.createElement("td", null, n), o.default.createElement("td", null, r), o.default.createElement("td", null, e.essay_answer), o.default.createElement("td", null, e.essay_answer_2), o.default.createElement("td", null, o.default.createElement("a", {
                             target: "_blank",
                             href: a
