@@ -6796,7 +6796,7 @@ function init_app() {
                             n = e.github || "N/A",
                             r = e.linkedin || "N/A";
                         if(e.s3_hash == undefined || e.s3_hash == null || e.s3_hash == "") {
-                            a = o.default.createElement("tr", null, o.default.createElement("td", null, "N/A");
+                            a =  o.default.createElement("td", null, "N/A");
                         } else {
                             a = "https://s3-us-west-1.amazonaws.com/sbhacks-dev/" + e.s3_hash + ".pdf";
                             a = o.default.createElement("td", null, o.default.createElement("a", {
