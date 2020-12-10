@@ -1,0 +1,27 @@
+body {
+	text-align: center;
+	padding-top: 10px;
+	overflow-x: scroll;
+	font-size: 11px;
+}
+table {
+	margin: 0 auto;
+	text-align: center;
+}
+table, th, td {
+	border: 1px solid black;
+}
+th, td {
+	padding: 5px;
+}
+.dropdown {
+	margin: 20px 0;
+}
+
+.hide {
+	display: none!important;
+}
+
+.show {
+	display: block!important;
+}
