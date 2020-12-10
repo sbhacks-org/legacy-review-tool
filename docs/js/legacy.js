@@ -6796,14 +6796,15 @@ function init_app() {
                             n = e.github || "N/A",
                             r = e.linkedin || "N/A";
                         if(e.s3_hash == undefined || e.s3_hash == null || e.s3_hash == "") {
-                            a = "N/A";
+                            a = o.default.createElement("tr", null, o.default.createElement("td", null, "N/A");
                         } else {
                             a = "https://s3-us-west-1.amazonaws.com/sbhacks-dev/" + e.s3_hash + ".pdf";
+                            a = o.default.createElement("td", null, o.default.createElement("a", {
+                                target: "_blank",
+                                href: a
+                            }, "View Resume"));
                         }
-                        return o.default.createElement("tr", null, o.default.createElement("td", null, e.first_name, " ", e.last_name), o.default.createElement("td", null, t), o.default.createElement("td", null, e.major), o.default.createElement("td", null, e.graduation_year), o.default.createElement("td", null, e.ethnicity), o.default.createElement("td", null, e.level_of_study), o.default.createElement("td", null, n), o.default.createElement("td", null, r), o.default.createElement("td", null, e.essay_answer), o.default.createElement("td", null, e.essay_answer_2), o.default.createElement("td", null, o.default.createElement("a", {
-                            target: "_blank",
-                            href: a
-                        }, "View Resume")), o.default.createElement("td", null, e.rating_avg > 0 ? e.rating_avg : "N/A"), o.default.createElement("td", null, o.default.createElement(i.default, {
+                        return o.default.createElement("tr", null, o.default.createElement("td", null, e.first_name, " ", e.last_name), o.default.createElement("td", null, t), o.default.createElement("td", null, e.major), o.default.createElement("td", null, e.graduation_year), o.default.createElement("td", null, e.ethnicity), o.default.createElement("td", null, e.level_of_study), o.default.createElement("td", null, n), o.default.createElement("td", null, r), o.default.createElement("td", null, e.essay_answer), o.default.createElement("td", null, e.essay_answer_2), a, o.default.createElement("td", null, e.rating_avg > 0 ? e.rating_avg : "N/A"), o.default.createElement("td", null, o.default.createElement(i.default, {
                             rating: this.state.rating,
                             handleChange: this.handleChange.bind(this)
                         })))
