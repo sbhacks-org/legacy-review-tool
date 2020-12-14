@@ -1,5 +1,6 @@
 function init_app() {
     var SBHACKS_API_URL = "https://sbhacks-api-qa.herokuapp.com/";
+    //var SBHACKS_API_URL = "http://localhost:5000/";
     function run_legacy_app() {
         !function(e) {
             var t = {};
@@ -8379,7 +8380,49 @@ function init_app() {
                 SCREEN_LOGIN.setAttribute( "class", "show" );
             }
         }
-        xhr.open( "GET", SBHACKS_API_URL + "review/legacy", true );
+
+        var current_url = window.location.href;
+        var start = current_url.split( "?start=" );
+        if( start.length > 1 ) {
+            start = parseInt( start[ 1 ].split( "&" )[ 0 ] );
+            if( start == NaN ) start = null;
+        } else {
+            start = current_url.split( "&start=" );
+            if( start.length > 1 ) {
+                start = parseInt( start[ 1 ].split( "&" )[ 0 ] );
+                if( start == NaN ) start = null;
+            } else {
+                start = null;
+            }
+        }
+        var end = current_url.split( "?end=" );
+        if( end.length > 1 ) {
+            end = parseInt( end[ 1 ].split( "&" )[ 0 ] );
+            if( end == NaN ) end = null;
+        } else {
+            end = current_url.split( "&end=" );
+            if( end.length > 1 ) {
+                end = parseInt( end[ 1 ].split( "&" )[ 0 ] );
+                if( end == NaN ) end = null;
+            } else {
+                end = null;
+            }
+        }
+        var review_url = SBHACKS_API_URL + "review/legacy",
+            appended = false;
+        if( start != null ) {
+            review_url += "?start=" + start.toString();
+            appended = true;
+        }
+        if( end != null ) {
+            if( start == null || end >= start ) {
+                if( appended ) review_url += "&";
+                else review_url += "?";
+                review_url += "end=" + end.toString();
+            }
+        }
+        console.log( review_url );
+        xhr.open( "GET", review_url, true );
         xhr.setRequestHeader( "Authorization", "Bearer " + localStorage.getItem( "token" ) );
         xhr.send();
     }
