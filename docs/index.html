@@ -5,7 +5,9 @@
 		<link rel="stylesheet" href="./css/legacy.css">
 	</head>
 	<body>
-		<div id="screen-login" class="show">
+		<div id="screen-login" class="hide">
+			<span id="msg-login" class="hide"></span>
+			<br />
 			<input type="text" name="email" placeholder="Email address..." id="email-input" />
 			<br />
 			<input type="password" name="password" placeholder="Password..." id="password-input" />
@@ -15,7 +17,9 @@
 		<div id="screen-loading" class="hide">
 			<p>Please wait</p>
 		</div>
-		<div id="root" class="hide"></div>
+		<div id="screen-root" class="hide">
+			<div id="root"></div>
+		</div>
 		<script src="./js/legacy.js"></script>
 	</body>
 </html>

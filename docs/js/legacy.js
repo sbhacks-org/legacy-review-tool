@@ -8354,7 +8354,8 @@ function init_app() {
         }]);
     }
 
-    var SCREEN_ROOT = document.getElementById( "root" ),
+    var MSG_LOGIN = document.getElementById( "msg-login" ),
+        SCREEN_ROOT = document.getElementById( "screen-root" ),
         SCREEN_LOGIN = document.getElementById( "screen-login" ),
         SCREEN_LOADING = document.getElementById( "screen-loading" ),
         INPUT_EMAIL = document.getElementById( "email-input" ),
@@ -8370,6 +8371,12 @@ function init_app() {
                 run_legacy_app();
                 SCREEN_LOADING.setAttribute( "class", "hide" );
                 SCREEN_ROOT.setAttribute( "class", "show" );
+            } else if( xhr.status == 401 ) {
+                localStorage.removeItem( "token" );
+                SCREEN_LOADING.setAttribute( "class", "hide" );
+                MSG_LOGIN.innerHTML = "You are not authorized to access this page.";
+                MSG_LOGIN.setAttribute( "class", "show" );
+                SCREEN_LOGIN.setAttribute( "class", "show" );
             }
         }
         xhr.open( "GET", SBHACKS_API_URL + "review/legacy", true );
@@ -8390,7 +8397,12 @@ function init_app() {
                 if( response.success ) {
                     localStorage.setItem( "token", response.token );
                     request_applications();
-                } 
+                } else {
+                    SCREEN_LOADING.setAttribute( "class", "hide" );
+                    MSG_LOGIN.innerHTML = response.message;
+                    MSG_LOGIN.setAttribute( "class", "show" );
+                    SCREEN_LOGIN.setAttribute( "class", "show" );
+                }
             }
         }
         xhr.open( "POST", SBHACKS_API_URL + "auth/login", true );
@@ -8400,7 +8412,13 @@ function init_app() {
 
     BUTTON_LOGIN.addEventListener( "mouseup", login );
     BUTTON_LOGIN.addEventListener( "touchstart", login );
-    console.log( "loaded" );
+    
+    if( localStorage.getItem( "token" ) == null || localStorage.getItem( "token" ) == undefined ) {
+        SCREEN_LOGIN.setAttribute( "class", "show" );
+    } else {
+        SCREEN_LOADING.setAttribute( "class", "show" );
+        request_applications();
+    }
 }
 
 window.addEventListener( "load", init_app );
