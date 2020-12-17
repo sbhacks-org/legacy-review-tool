@@ -1,5 +1,5 @@
 function init_app() {
-    var SBHACKS_API_URL = "https://sbhacks-api-qa.herokuapp.com/";
+    var SBHACKS_API_URL = "https://sbhacks-api.herokuapp.com/";
     //var SBHACKS_API_URL = "http://localhost:5000/";
     function run_legacy_app() {
         !function(e) {
