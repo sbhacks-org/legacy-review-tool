@@ -6799,7 +6799,7 @@ function init_app() {
                         if(e.s3_hash == undefined || e.s3_hash == null || e.s3_hash == "") {
                             a =  o.default.createElement("td", null, "N/A");
                         } else {
-                            a = "https://s3-us-west-1.amazonaws.com/sbhacks/" + e.s3_hash + ".pdf";
+                            a = "https://s3-us-west-1.amazonaws.com/sbhacksvii/" + e.s3_hash + ".pdf";
                             a = o.default.createElement("td", null, o.default.createElement("a", {
                                 target: "_blank",
                                 href: a
