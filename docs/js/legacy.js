@@ -8408,6 +8408,19 @@ function init_app() {
                 end = null;
             }
         }
+        var priority = current_url.split( "?priority=" );
+        if( priority.length > 1 ) {
+            priority = parseInt( priority[ 1 ].split( "&" )[ 0 ] );
+            if( priority == NaN ) priority = null;
+        } else {
+            priority = current_url.split( "&priority=" );
+            if( priority.length > 1 ) {
+                priority = parseInt( priority[ 1 ].split( "&" )[ 0 ] );
+                if( priority == NaN ) priority = null;
+            } else {
+                priority = null;
+            }
+        }
         var review_url = SBHACKS_API_URL + "review/legacy",
             appended = false;
         if( start != null ) {
@@ -8419,7 +8432,14 @@ function init_app() {
                 if( appended ) review_url += "&";
                 else review_url += "?";
                 review_url += "end=" + end.toString();
+                appended = true;
             }
+        }
+        if( priority != null ) {
+            if( appended ) review_url += "&";
+            else review_url += "?";
+            review_url += "priority=" + priority.toString();
+            appended = true;
         }
         console.log( review_url );
         xhr.open( "GET", review_url, true );
