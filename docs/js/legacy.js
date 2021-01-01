@@ -6717,7 +6717,7 @@ function init_app() {
                             n = {
                                 width: "100px"
                             };
-                        return o.default.createElement("table", null, o.default.createElement("tr", null, o.default.createElement("th", null, "Name"), o.default.createElement("th", null, "School"), o.default.createElement("th", null, "Major"), o.default.createElement("th", null, "Grad Year"), o.default.createElement("th", null, "Ethnicity"), o.default.createElement("th", null, "Level of Study"), o.default.createElement("th", {
+                        return o.default.createElement("table", null, o.default.createElement("tr", null, o.default.createElement("th", null, "ID"), o.default.createElement("th", null, "Name"), o.default.createElement("th", null, "School"), o.default.createElement("th", null, "Major"), o.default.createElement("th", null, "Grad Year"), o.default.createElement("th", null, "Ethnicity"), o.default.createElement("th", null, "Level of Study"), o.default.createElement("th", {
                             style: n
                         }, "Github"), o.default.createElement("th", {
                             style: n
@@ -6805,7 +6805,7 @@ function init_app() {
                                 href: a
                             }, "View Resume"));
                         }
-                        return o.default.createElement("tr", null, o.default.createElement("td", null, e.first_name, " ", e.last_name), o.default.createElement("td", null, t), o.default.createElement("td", null, e.major), o.default.createElement("td", null, e.graduation_year), o.default.createElement("td", null, e.ethnicity), o.default.createElement("td", null, e.level_of_study), o.default.createElement("td", null, n), o.default.createElement("td", null, r), o.default.createElement("td", null, e.essay_answer), o.default.createElement("td", null, e.essay_answer_2), a, o.default.createElement("td", null, o.default.createElement(i.default, {
+                        return o.default.createElement("tr", null, o.default.createElement("td", null, e.id), o.default.createElement("td", null, e.first_name, " ", e.last_name), o.default.createElement("td", null, t), o.default.createElement("td", null, e.major), o.default.createElement("td", null, e.graduation_year), o.default.createElement("td", null, e.ethnicity), o.default.createElement("td", null, e.level_of_study), o.default.createElement("td", null, n), o.default.createElement("td", null, r), o.default.createElement("td", null, e.essay_answer), o.default.createElement("td", null, e.essay_answer_2), a, o.default.createElement("td", null, o.default.createElement(i.default, {
                             rating: this.state.rating,
                             handleChange: this.handleChange.bind(this)
                         })))
@@ -6868,11 +6868,11 @@ function init_app() {
                             value: "2"
                         }, "2"), a.default.createElement("option", {
                             value: "2.5"
-                        }, "3L"), a.default.createElement("option", {
+                        }, "2.5"), a.default.createElement("option", {
                             value: "3"
-                        }, "3M"), a.default.createElement("option", {
+                        }, "3"), a.default.createElement("option", {
                             value: "3.5"
-                        }, "3H"), a.default.createElement("option", {
+                        }, "3.5"), a.default.createElement("option", {
                             value: "4"
                         }, "4"), a.default.createElement("option", {
                             value: "5"
