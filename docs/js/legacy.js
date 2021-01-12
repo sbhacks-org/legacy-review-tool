@@ -8363,6 +8363,24 @@ function init_app() {
         INPUT_PASSWORD = document.getElementById( "password-input" ),
         BUTTON_LOGIN = document.getElementById( "login-button" );
 
+    function get_url_param( param ) {
+        var current_url = window.location.href;
+        url_param = current_url.split( "?" + param + "=" );
+        if( url_param.length > 1 ) {
+            url_param = parseInt( url_param[ 1 ].split( "&" )[ 0 ] );
+            if( url_param == NaN ) url_param = null;
+        } else {
+            url_param = current_url.split( "&" + param + "=" );
+            if( url_param.length > 1 ) {
+                url_param = parseInt( url_param[ 1 ].split( "&" )[ 0 ] );
+                if( url_param == NaN ) url_param = null;
+            } else {
+                url_param = null;
+            }
+        }
+        return url_param;
+    }
+
     function request_applications() {
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
@@ -8382,45 +8400,11 @@ function init_app() {
         }
 
         var current_url = window.location.href;
-        var start = current_url.split( "?start=" );
-        if( start.length > 1 ) {
-            start = parseInt( start[ 1 ].split( "&" )[ 0 ] );
-            if( start == NaN ) start = null;
-        } else {
-            start = current_url.split( "&start=" );
-            if( start.length > 1 ) {
-                start = parseInt( start[ 1 ].split( "&" )[ 0 ] );
-                if( start == NaN ) start = null;
-            } else {
-                start = null;
-            }
-        }
-        var end = current_url.split( "?end=" );
-        if( end.length > 1 ) {
-            end = parseInt( end[ 1 ].split( "&" )[ 0 ] );
-            if( end == NaN ) end = null;
-        } else {
-            end = current_url.split( "&end=" );
-            if( end.length > 1 ) {
-                end = parseInt( end[ 1 ].split( "&" )[ 0 ] );
-                if( end == NaN ) end = null;
-            } else {
-                end = null;
-            }
-        }
-        var priority = current_url.split( "?priority=" );
-        if( priority.length > 1 ) {
-            priority = parseInt( priority[ 1 ].split( "&" )[ 0 ] );
-            if( priority == NaN ) priority = null;
-        } else {
-            priority = current_url.split( "&priority=" );
-            if( priority.length > 1 ) {
-                priority = parseInt( priority[ 1 ].split( "&" )[ 0 ] );
-                if( priority == NaN ) priority = null;
-            } else {
-                priority = null;
-            }
-        }
+        var start = get_url_param( "start" );
+        var end = get_url_param( "end" );
+        var priority = get_url_param( "priority" );
+        var complete = get_url_param( "complete" );
+        var reviewed = get_url_param( "reviewed" );
         var review_url = SBHACKS_API_URL + "review/legacy",
             appended = false;
         if( start != null ) {
@@ -8439,6 +8423,18 @@ function init_app() {
             if( appended ) review_url += "&";
             else review_url += "?";
             review_url += "priority=" + priority.toString();
+            appended = true;
+        }
+        if( complete != null ) {
+            if( appended ) review_url += "&";
+            else review_url += "?";
+            review_url += "complete=" + complete.toString();
+            appended = true;
+        }
+        if( reviewed != null ) {
+            if( appended ) review_url += "&";
+            else review_url += "?";
+            review_url += "reviewed=" + reviewed.toString();
             appended = true;
         }
         console.log( review_url );
